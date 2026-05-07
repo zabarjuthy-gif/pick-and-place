@@ -166,7 +166,12 @@ armMotors[2].setPosition(-0.3)
 robot.step(200 * timestep)
 
 armMotors[1].setPosition(-1.0)
-robot.step(200 * timestep)
+
+while robot.step(timestep) != -1:
+    valor = armPositionSensors[1].getValue()
+
+    if -1.25 <= valor <= -0.75:
+        break
 
 armMotors[3].setPosition(-1.0)
 robot.step(200 * timestep)
